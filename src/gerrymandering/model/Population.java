@@ -1,10 +1,21 @@
-package utils;
+package gerrymandering.model;
 
 import java.util.Date;
 
-public class Population {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "ELECTION_DATA")
+public class Population implements java.io.Serializable{
+	@Id @GeneratedValue
+	@Column(name = "PRECINCT_ID")
 	private int poputationId;
+	
+	
 	private Date date;
 	private double population;
 	private int precinctId;

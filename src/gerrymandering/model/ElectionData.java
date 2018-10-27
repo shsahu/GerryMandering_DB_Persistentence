@@ -1,24 +1,53 @@
-package utils;
+package gerrymandering.model;
 
-public class ElectionData {
-	
+import java.sql.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "ELECTION_DATA")
+public class ElectionData implements java.io.Serializable{
+
+	private static final long serialVersionUID = 1L;
+
+	@Id @GeneratedValue
+	@Column(name = "ELECTION_ID")
 	private int electionId;
+	
+	@Column(name = "REPRESENTATIVE_ID")
 	private int representativeId;
+	
+	@Column(name = "PARTY_NAME")
 	private String partyName;
+	
+	@Column(name = "ELECTION_TYPE")
 	private String electionType;
+	
+	@Column(name = "VOTE_COUNT")
 	private double voteCount;
+	
+	@Column(name = "PRECINCT_ID")
 	private int precinctId;
+	
+	@Column(name = "DISTRICT_ID")
 	private int districtId;
+	
+	@Column(name = "ELECTION_DATE")
+	private Date electionDate;
 
-	public ElectionData(int electionId, int representativeId, String partyName, String electionType, double voteCount,
-			int precinctId, int districtId) {
-		this.electionId = electionId;
+	public ElectionData(int representativeId, String partyName, String electionType, double voteCount,
+			int precinctId, int districtId, Date electionDate) {
 		this.representativeId = representativeId;
 		this.partyName = partyName;
 		this.electionType = electionType;
 		this.voteCount = voteCount;
 		this.precinctId = precinctId;
 		this.districtId = districtId;
+		this.electionDate = electionDate;
 	}
 
 	public int getElectionId() {
@@ -77,7 +106,5 @@ public class ElectionData {
 		this.districtId = districtId;
 	}
 
-	public ElectionData() {
-		// TODO Auto-generated constructor stub
-	}
+	public ElectionData() {}
 }

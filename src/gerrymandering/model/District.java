@@ -1,8 +1,7 @@
 package gerrymandering.model;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import utils.Validator;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -28,25 +27,13 @@ public class District implements java.io.Serializable{
 	private String boundaryJSON;
 	
 	public District(int stateId, String name, String boundaryJSON)  throws Exception{
-		if(!isJSONValid(boundaryJSON))
+		if(!Validator.isJSONValid(boundaryJSON))
 			throw new Exception("boundaryJSON value is not a valid JSON");
 		this.stateId = stateId;
 		this.name = name;
 		this.boundaryJSON = boundaryJSON;
 	}
 	public District() {}
-	private boolean isJSONValid(String test) {
-	    try {
-	        new JSONObject(test);
-	    } catch (JSONException ex) {
-	        try {
-	            new JSONArray(test);
-	        } catch (JSONException ex1) {
-	            return false;
-	        }
-	    }
-	    return true;
-	}
 
 	public int getDistrictId() {
 		return districtId;

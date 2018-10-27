@@ -8,6 +8,8 @@ import javax.persistence.Table;
 
 import org.json.JSONObject;
 
+import utils.Validator;
+
 @Entity
 @Table(name = "PRECINCTS")
 public class Precinct implements java.io.Serializable{
@@ -18,17 +20,22 @@ public class Precinct implements java.io.Serializable{
 	private int precinctId;
 	
 	@Column(name = "CENTER_POINT")
-	private String centerPoint;
+	private String centerPointJSON;
 	
 	@Column(name = "BOUNDARY")
-	private String boundary;
+	private String boundaryJSON;
 	
 	@Column(name = "DISTRICT_ID")
 	private int districtId;
 
-	public Precinct(String centerPoint, String boundary, int districtId) {
-		this.centerPoint = centerPoint;
-		this.boundary = boundary;
+	public Precinct(int districtId, String centerPointJSON, String boundaryJSON) throws Exception {
+		
+		if(!Validator.isJSONValid(boundaryJSON))
+			throw new Exception("boundaryJSON value is not a valid JSON");
+		if(!Validator.isJSONValid(boundaryJSON))
+			throw new Exception("centerPointJSON value is not a valid JSON");
+		this.centerPointJSON = centerPointJSON;
+		this.boundaryJSON = boundaryJSON;
 		this.districtId = districtId;
 	}
 	
@@ -42,20 +49,20 @@ public class Precinct implements java.io.Serializable{
 		this.precinctId = precinctId;
 	}
 
-	public String getCenterPoint() {
-		return centerPoint;
+	public String getCenterPointJSON() {
+		return centerPointJSON;
 	}
 
-	public void setCenterPoint(String centerPoint) {
-		this.centerPoint = centerPoint;
+	public void setCenterPointJSON(String centerPointJSON) {
+		this.centerPointJSON = centerPointJSON;
 	}
 
-	public String getBoundary() {
-		return boundary;
+	public String getBoundaryJSON() {
+		return boundaryJSON;
 	}
 
-	public void setBoundary(String boundary) {
-		this.boundary = boundary;
+	public void setBoundary(String boundaryJSON) {
+		this.boundaryJSON = boundaryJSON;
 	}
 
 	public int getDistrictId() {

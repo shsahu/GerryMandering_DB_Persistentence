@@ -45,7 +45,7 @@ public class HibernateManager {
 	 * @return success statue
 	 * @throws Throwable : use getStackTrace() to find the error
 	 */
-	public boolean persisttoDB(Object o) throws Throwable{	
+	public boolean persistToDB(Object o) throws Throwable{	
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		session.persist(o);

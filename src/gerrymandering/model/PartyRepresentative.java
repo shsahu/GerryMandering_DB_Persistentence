@@ -1,9 +1,23 @@
-package utils;
+package gerrymandering.model;
 
-public class PartyRepresentative {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "PARTY_REPRESENTATIVE")
+public class PartyRepresentative implements java.io.Serializable{
+
+	@Id @GeneratedValue
+	@Column(name = "REPRESENTATIVE_ID")
 	private int representativeId;
+	
+	@Column(name = "NAME")
 	private String name;
+	
+	@Column(name = "ADDRESS")
 	private String address;
 
 	public int getRepresentativeId() {
@@ -30,13 +44,10 @@ public class PartyRepresentative {
 		this.address = address;
 	}
 
-	public PartyRepresentative(int representativeId, String name, String address) {
-		this.representativeId = representativeId;
+	public PartyRepresentative(String name, String address) {
 		this.name = name;
 		this.address = address;
 	}
 
-	public PartyRepresentative() {
-		// TODO Auto-generated constructor stub
-	}
+	public PartyRepresentative() {}
 }

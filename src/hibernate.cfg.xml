@@ -15,6 +15,9 @@
     <!-- conf files -->
     <mapping class="gerrymandering.model.State" />
     <mapping class="gerrymandering.model.District" />
-      
+    <mapping class="gerrymandering.model.Precinct" />
+    <mapping class="gerrymandering.model.ElectionData" />
+    <mapping class="gerrymandering.model.PartyRepresentative" />
+    <mapping class="gerrymandering.model.Population" />
   </session-factory>
 </hibernate-configuration>
