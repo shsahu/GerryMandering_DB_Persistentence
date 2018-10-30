@@ -8,6 +8,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import utils.ElectionType;
+import utils.PartyName;
+
 @Entity
 @Table(name = "ELECTION_DATA")
 public class ElectionData implements java.io.Serializable{
@@ -22,10 +25,10 @@ public class ElectionData implements java.io.Serializable{
 	private int representativeId;
 	
 	@Column(name = "PARTY_NAME")
-	private String partyName;
+	private PartyName partyName;
 	
 	@Column(name = "ELECTION_TYPE")
-	private String electionType;
+	private ElectionType electionType;
 	
 	@Column(name = "VOTE_COUNT")
 	private double voteCount;
@@ -39,7 +42,7 @@ public class ElectionData implements java.io.Serializable{
 	@Column(name = "ELECTION_DATE")
 	private Date electionDate;
 
-	public ElectionData(int representativeId, String partyName, String electionType, double voteCount,
+	public ElectionData(int representativeId, PartyName partyName, ElectionType electionType, double voteCount,
 			int precinctId, int districtId, Date electionDate) {
 		this.representativeId = representativeId;
 		this.partyName = partyName;
@@ -66,19 +69,19 @@ public class ElectionData implements java.io.Serializable{
 		this.representativeId = representativeId;
 	}
 
-	public String getPartyName() {
+	public PartyName getPartyName() {
 		return partyName;
 	}
 
-	public void setPartyName(String partyName) {
+	public void setPartyName(PartyName partyName) {
 		this.partyName = partyName;
 	}
 
-	public String getElectionType() {
+	public ElectionType getElectionType() {
 		return electionType;
 	}
 
-	public void setElectionType(String electionType) {
+	public void setElectionType(ElectionType electionType) {
 		this.electionType = electionType;
 	}
 
