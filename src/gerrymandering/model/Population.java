@@ -12,7 +12,7 @@ import javax.persistence.Table;
 @Table(name = "ELECTION_DATA")
 public class Population implements java.io.Serializable{
 	@Id @GeneratedValue
-	@Column(name = "PRECINCT_ID")
+	@Column(name = "POPULATION_ID")
 	private int poputationId;
 	
 	private Date date;
