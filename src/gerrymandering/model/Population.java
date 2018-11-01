@@ -15,14 +15,16 @@ public class Population implements java.io.Serializable{
 	@Column(name = "PRECINCT_ID")
 	private int poputationId;
 	
-	
 	private Date date;
 	private double population;
+	
+	@Column(name = "PRECINCT_ID")
 	private int precinctId;
+	
+	@Column(name = "DISTRICT_ID")
 	private int districtId;
 
-	public Population(int poputationId, Date date, double population, int precinctId, int districtId) {
-		this.poputationId = poputationId;
+	public Population(Date date, double population, int precinctId, int districtId) {
 		this.date = date;
 		this.population = population;
 		this.precinctId = precinctId;

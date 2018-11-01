@@ -4,6 +4,8 @@ import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -24,9 +26,11 @@ public class ElectionData implements java.io.Serializable{
 	@Column(name = "REPRESENTATIVE_ID")
 	private int representativeId;
 	
+	@Enumerated(EnumType.STRING)
 	@Column(name = "PARTY_NAME")
 	private PartyName partyName;
 	
+	@Enumerated(EnumType.STRING)
 	@Column(name = "ELECTION_TYPE")
 	private ElectionType electionType;
 	

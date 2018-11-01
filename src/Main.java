@@ -10,6 +10,7 @@ import gerrymandering.model.PartyRepresentative;
 import gerrymandering.model.Precinct;
 import gerrymandering.model.State;
 import utils.ElectionType;
+import utils.PartyName;
 
 public class Main {
 	public static void main(String[] args) {
@@ -72,7 +73,7 @@ public class Main {
 				System.out.print(emp.getBoundary()+" ");
 				System.out.println();
 			}
-			
+		
 			//to add new District in a state
 			String boundaryJson = "[{'x': '0', 'y': '0'}, {'x': '1', 'y': '1'}]";
 			District d = new District(state.getStateId(),"Brooklyn",boundaryJson);
@@ -84,9 +85,10 @@ public class Main {
 			Precinct p = new Precinct(d.getDistrictId(),centrePoint,boundaryJson);
 			result = hb.persistToDB(p);
 			
-			//hb.persistToDB(new PartyRepresentative("John","Brooklyn"));
-			//java.sql.Date jsqlD = java.sql.Date.valueOf( "2010-01-31" );
-			//hb.persistToDB(new ElectionData(1,"congress","general", 1001, 1, 10, jsqlD));
+			hb.persistToDB(new PartyRepresentative("John","Brooklyn"));
+			java.sql.Date jsqlD = java.sql.Date.valueOf( "2010-01-31" );
+			ElectionData ed = new ElectionData(1,PartyName.Democratic,ElectionType.Congress, 1001, 1, 10, jsqlD);
+			hb.persistToDB(ed);
 			
 		} catch (Throwable e) {
 			System.out.println("Exception: " + e.getMessage());
