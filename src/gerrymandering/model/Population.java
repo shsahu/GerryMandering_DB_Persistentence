@@ -23,12 +23,35 @@ public class Population implements java.io.Serializable{
 	
 	@Column(name = "DISTRICT_ID")
 	private int districtId;
+	
+	@Column(name = "EXTERNAL_ID")
+	private String externalId;
+	
+	@Column(name = "TEAM_NAME")
+	private String teamName;
+	
+	@Column(name = "REMARKS")
+	private String remarks;
+	
+	public Population(Date date, double population, int precinctId, int districtId, String teamName, String remarks) {
+		this(date, population, precinctId, districtId, teamName);
+		this.remarks = remarks;
+	}
+	
+	public Population(Date date, double population, int precinctId, int districtId, String teamName) {
+		this(date, population, precinctId, districtId);
+		this.teamName = teamName;
+	}
 
-	public Population(Date date, double population, int precinctId, int districtId) {
+	private Population(Date date, double population, int precinctId, int districtId) {
 		this.date = date;
 		this.population = population;
 		this.precinctId = precinctId;
 		this.districtId = districtId;
+	}
+	
+	public Population() {
+		// TODO Auto-generated constructor stub
 	}
 
 	public int getPoputationId() {
@@ -70,8 +93,28 @@ public class Population implements java.io.Serializable{
 	public void setDistrictId(int districtId) {
 		this.districtId = districtId;
 	}
-
-	public Population() {
-		// TODO Auto-generated constructor stub
+	
+	public String getExternalId() {
+		return externalId;
+	}
+	
+	public void setExternalId(String externalId) {
+		this.externalId = externalId;
+	}
+	
+	public String getTeamName() {
+		return teamName;
+	}
+	
+	public void setTeamName(String teamName) {
+		this.teamName = teamName;
+	}
+	
+	public String getRemarks() {
+		return remarks;
+	}
+	
+	public void setRemarks(String remarks) {
+		this.remarks = remarks;
 	}
 }

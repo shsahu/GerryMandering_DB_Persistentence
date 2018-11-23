@@ -24,12 +24,32 @@ public class State implements java.io.Serializable{
 	@Column(name = "CONSTITUTION_TEXT")
 	private String constitutionText;
 	
-	public State(String name, String shortName, String constitutionText) {
+	@Column(name = "EXTERNAL_ID")
+	private String externalId;
+	
+	@Column(name = "TEAM_NAME")
+	private String teamName;
+	
+	@Column(name = "REMARKS")
+	private String remarks;
+	
+	public State(String name, String shortName, String constitutionText, String teamName, String remarks) {
+		this(name, shortName, constitutionText, teamName);
+		this.remarks = remarks;
+	}
+	
+	public State(String name, String shortName, String constitutionText, String teamName) {
+		this(name, shortName, constitutionText);
+		this.teamName = teamName;
+	}
+	
+	private State(String name, String shortName, String constitutionText) {
 		this.name = name;
 		this.shortName = shortName;
 		this.constitutionText = constitutionText;
 	}
-	public State() {	}
+	
+	public State() {}
 
 	public int getStateId() {
 		return stateId;
@@ -60,6 +80,30 @@ public class State implements java.io.Serializable{
 	}
 	public void setConstitutionText(String constitutionText) {
 		this.constitutionText = constitutionText;
+	}
+	
+	public String getExternalId() {
+		return externalId;
+	}
+	
+	public void setExternalId(String externalId) {
+		this.externalId = externalId;
+	}
+	
+	public String getTeamName() {
+		return teamName;
+	}
+	
+	public void setTeamName(String teamName) {
+		this.teamName = teamName;
+	}
+	
+	public String getRemarks() {
+		return remarks;
+	}
+	
+	public void setRemarks(String remarks) {
+		this.remarks = remarks;
 	}
 }
 

@@ -45,8 +45,29 @@ public class ElectionData implements java.io.Serializable{
 	
 	@Column(name = "ELECTION_DATE")
 	private Date electionDate;
-
+	
+	@Column(name = "EXTERNAL_ID")
+	private String externalId;
+	
+	@Column(name = "TEAM_NAME")
+	private String teamName;
+	
+	@Column(name = "REMARKS")
+	private String remarks;
+	
 	public ElectionData(int representativeId, PartyName partyName, ElectionType electionType, double voteCount,
+			int precinctId, int districtId, Date electionDate, String teamName, String remarks) {
+		this(representativeId, partyName, electionType, voteCount, precinctId, districtId, electionDate, teamName);
+		this.remarks = remarks;
+	}
+	
+	public ElectionData(int representativeId, PartyName partyName, ElectionType electionType, double voteCount,
+			int precinctId, int districtId, Date electionDate, String teamName) {
+		this(representativeId, partyName, electionType, voteCount, precinctId, districtId, electionDate);
+		this.teamName = teamName;
+	}
+	
+	private ElectionData(int representativeId, PartyName partyName, ElectionType electionType, double voteCount,
 			int precinctId, int districtId, Date electionDate) {
 		this.representativeId = representativeId;
 		this.partyName = partyName;
@@ -56,6 +77,8 @@ public class ElectionData implements java.io.Serializable{
 		this.districtId = districtId;
 		this.electionDate = electionDate;
 	}
+	
+	public ElectionData() {}
 
 	public int getElectionId() {
 		return electionId;
@@ -112,6 +135,28 @@ public class ElectionData implements java.io.Serializable{
 	public void setDistrictId(int districtId) {
 		this.districtId = districtId;
 	}
-
-	public ElectionData() {}
+	
+	public String getExternalId() {
+		return externalId;
+	}
+	
+	public void setExternalId(String externalId) {
+		this.externalId = externalId;
+	}
+	
+	public String getTeamName() {
+		return teamName;
+	}
+	
+	public void setTeamName(String teamName) {
+		this.teamName = teamName;
+	}
+	
+	public String getRemarks() {
+		return remarks;
+	}
+	
+	public void setRemarks(String remarks) {
+		this.remarks = remarks;
+	}
 }

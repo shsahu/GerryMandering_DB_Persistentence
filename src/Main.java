@@ -13,6 +13,8 @@ import utils.ElectionType;
 import utils.PartyName;
 
 public class Main {
+	public static String TEAM_NAME = "testing";
+	
 	public static void main(String[] args) {
 		boolean result= false;
 		List<Object> l;
@@ -42,7 +44,7 @@ public class Main {
 			if(state.getStateId() == 0) {
 				// add new state
 				String text = "Constitution Text";
-				state = new State("New York","NY",text);
+				state = new State("New York","NY",text, TEAM_NAME);
 				result = hb.persistToDB(state);
 			}
 			
@@ -76,18 +78,18 @@ public class Main {
 		
 			//to add new District in a state
 			String boundaryJson = "[{'x': '0', 'y': '0'}, {'x': '1', 'y': '1'}]";
-			District d = new District(state.getStateId(),"Brooklyn",boundaryJson);
+			District d = new District(state.getStateId(),"Brooklyn",boundaryJson, TEAM_NAME);
 			result = hb.persistToDB(d);
 			
 			//to add new Precinct in a district
 			boundaryJson = "[{'x': '0', 'y': '0'}, {'x': '1', 'y': '1'}]";
 			String centrePoint = "{x:0,y:0}";
-			Precinct p = new Precinct(d.getDistrictId(),centrePoint,boundaryJson);
+			Precinct p = new Precinct(d.getDistrictId(),centrePoint,boundaryJson, TEAM_NAME);
 			result = hb.persistToDB(p);
 			
-			hb.persistToDB(new PartyRepresentative("John","Brooklyn"));
+			hb.persistToDB(new PartyRepresentative("John","Brooklyn", TEAM_NAME));
 			java.sql.Date jsqlD = java.sql.Date.valueOf( "2010-01-31" );
-			ElectionData ed = new ElectionData(1,PartyName.Democratic,ElectionType.Congress, 1001, 1, 10, jsqlD);
+			ElectionData ed = new ElectionData(1,PartyName.Democratic,ElectionType.Congress, 1001, 1, 10, jsqlD, TEAM_NAME);
 			hb.persistToDB(ed);
 			
 		} catch (Throwable e) {

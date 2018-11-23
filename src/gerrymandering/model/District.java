@@ -16,7 +16,7 @@ public class District implements java.io.Serializable{
 	@Id @GeneratedValue
 	@Column(name = "DISTRICT_ID")
 	private int districtId;
-	
+
 	@Column(name = "STATE_ID")
 	private int stateId;
 	
@@ -26,13 +26,33 @@ public class District implements java.io.Serializable{
 	@Column(name = "BOUNDARY")
 	private String boundaryJSON;
 	
-	public District(int stateId, String name, String boundaryJSON)  throws Exception{
+	@Column(name = "EXTERNAL_ID")
+	private String externalId;
+	
+	@Column(name = "TEAM_NAME")
+	private String teamName;
+	
+	@Column(name = "REMARKS")
+	private String remarks;
+	
+	public District(int stateId, String name, String boundaryJSON, String teamName, String remarks)  throws Exception{
+		this(stateId, name, boundaryJSON, teamName);
+		this.remarks = remarks;
+	}
+
+	public District(int stateId, String name, String boundaryJSON, String teamName)  throws Exception{
+		this(stateId, name, boundaryJSON);
+		this.teamName = teamName;
+	}
+	
+	private District(int stateId, String name, String boundaryJSON)  throws Exception{
 		if(!Validator.isJSONValid(boundaryJSON))
 			throw new Exception("boundaryJSON value is not a valid JSON");
 		this.stateId = stateId;
 		this.name = name;
 		this.boundaryJSON = boundaryJSON;
 	}
+	
 	public District() {}
 
 	public int getDistrictId() {
@@ -65,5 +85,29 @@ public class District implements java.io.Serializable{
 
 	public void setBoundary(String boundaryJSON) {
 		this.boundaryJSON = boundaryJSON;
+	}
+	
+	public String getExternalId() {
+		return externalId;
+	}
+	
+	public void setExternalId(String externalId) {
+		this.externalId = externalId;
+	}
+	
+	public String getTeamName() {
+		return teamName;
+	}
+	
+	public void setTeamName(String teamName) {
+		this.teamName = teamName;
+	}
+	
+	public String getRemarks() {
+		return remarks;
+	}
+	
+	public void setRemarks(String remarks) {
+		this.remarks = remarks;
 	}
 }
