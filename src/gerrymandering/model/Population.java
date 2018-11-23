@@ -50,7 +50,11 @@ public class Population implements java.io.Serializable{
 		this.districtId = districtId;
 	}
 	
-	public Population() {
+	public Population(String teamName) {
+		this.teamName = teamName;
+	}
+	
+	private Population() {
 		// TODO Auto-generated constructor stub
 	}
 

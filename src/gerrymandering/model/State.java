@@ -49,7 +49,11 @@ public class State implements java.io.Serializable{
 		this.constitutionText = constitutionText;
 	}
 	
-	public State() {}
+	public State(String teamName) {
+		this.teamName = teamName;
+	}
+	
+	private State() {}
 
 	public int getStateId() {
 		return stateId;

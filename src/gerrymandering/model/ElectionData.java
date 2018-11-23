@@ -78,7 +78,11 @@ public class ElectionData implements java.io.Serializable{
 		this.electionDate = electionDate;
 	}
 	
-	public ElectionData() {}
+	public ElectionData(String teamName) {
+		this.teamName = teamName;
+	}
+	
+	private ElectionData() {}
 
 	public int getElectionId() {
 		return electionId;

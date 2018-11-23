@@ -43,8 +43,12 @@ public class PartyRepresentative implements java.io.Serializable{
 		this.name = name;
 		this.address = address;
 	}
+	
+	public PartyRepresentative(String teamName) {
+		this.teamName = teamName;
+	}
 
-	public PartyRepresentative() {}
+	private PartyRepresentative() {}
 	
 
 	public int getRepresentativeId() {

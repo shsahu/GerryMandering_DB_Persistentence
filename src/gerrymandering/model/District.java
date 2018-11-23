@@ -53,7 +53,11 @@ public class District implements java.io.Serializable{
 		this.boundaryJSON = boundaryJSON;
 	}
 	
-	public District() {}
+	public District(String teamName) {
+		this.teamName = teamName;
+	}
+	
+	private District() {}
 
 	public int getDistrictId() {
 		return districtId;

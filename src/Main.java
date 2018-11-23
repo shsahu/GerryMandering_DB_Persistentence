@@ -22,7 +22,7 @@ public class Main {
 		try {
 			HibernateManager hb = HibernateManager.getInstance();	
 			
-			State state = new State();
+			State state = new State(TEAM_NAME);
 			state.setShortName("NY");
 			//to get all existing states and check for presence of a given state.
 			l =hb.getAllRecords(State.class);

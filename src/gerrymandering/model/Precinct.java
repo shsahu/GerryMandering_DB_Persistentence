@@ -58,7 +58,11 @@ public class Precinct implements java.io.Serializable{
 		this.districtId = districtId;
 	}
 	
-	public Precinct() {}
+	public Precinct(String teamName) {
+		this.teamName = teamName;
+	}
+	
+	private Precinct() {}
 
 	public int getPrecinctId() {
 		return precinctId;
