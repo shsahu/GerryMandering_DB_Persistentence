@@ -13,17 +13,15 @@ import utils.ElectionType;
 import utils.PartyName;
 
 public class Main {
-	public static String TEAM_NAME = "testing";
-	
 	public static void main(String[] args) {
 		boolean result= false;
+		String teamName = "team-TA";
 		List<Object> l;
 		Iterator<Object> itr;
 		try {
 			HibernateManager hb = HibernateManager.getInstance();	
 			
-			State state = new State(TEAM_NAME);
-			state.setShortName("NY");
+			State state = null;
 			//to get all existing states and check for presence of a given state.
 			l =hb.getAllRecords(State.class);
 			itr = l.iterator();
@@ -35,16 +33,16 @@ public class Main {
 				System.out.print(s.getConstitutionText()+" ");
 				System.out.println();
 				
-				if(s.getShortName().equals(state.getShortName())) {
+				if(s.getShortName().equals("NY")) {
 					System.out.println("State " + s.getName() +" already exists");
 					state = s;
 				}
 			}
 			//if state is not found in DB
-			if(state.getStateId() == 0) {
+			if(state == null) {
 				// add new state
 				String text = "Constitution Text";
-				state = new State("New York","NY",text, TEAM_NAME);
+				state = new State("New York","NY",text,teamName);
 				result = hb.persistToDB(state);
 			}
 			
@@ -78,19 +76,22 @@ public class Main {
 		
 			//to add new District in a state
 			String boundaryJson = "[{'x': '0', 'y': '0'}, {'x': '1', 'y': '1'}]";
-			District d = new District(state.getStateId(),"Brooklyn",boundaryJson, TEAM_NAME);
+			District d = new District(state.getStateId(),"Brooklyn",boundaryJson,teamName);
 			result = hb.persistToDB(d);
 			
 			//to add new Precinct in a district
 			boundaryJson = "[{'x': '0', 'y': '0'}, {'x': '1', 'y': '1'}]";
 			String centrePoint = "{x:0,y:0}";
-			Precinct p = new Precinct(d.getDistrictId(),centrePoint,boundaryJson, TEAM_NAME);
+			Precinct p = new Precinct(d.getDistrictId(),centrePoint,boundaryJson,teamName);
 			result = hb.persistToDB(p);
 			
-			hb.persistToDB(new PartyRepresentative("John","Brooklyn", TEAM_NAME));
+			hb.persistToDB(new PartyRepresentative("John","Brooklyn",teamName));
+			
 			java.sql.Date jsqlD = java.sql.Date.valueOf( "2010-01-31" );
-			ElectionData ed = new ElectionData(1,PartyName.Democratic,ElectionType.Congress, 1001, 1, 10, jsqlD, TEAM_NAME);
+			ElectionData ed = new ElectionData(1,PartyName.Democratic,ElectionType.Congress, 1001, 1, 10, jsqlD,teamName);
 			hb.persistToDB(ed);
+			
+			hb.addRemark(ed, "Old Election data");
 			
 		} catch (Throwable e) {
 			System.out.println("Exception: " + e.getMessage());
