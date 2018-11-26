@@ -12,7 +12,7 @@ import utils.Validator;
 
 @Entity
 @Table(name = "PRECINCTS")
-public class Precinct implements java.io.Serializable{
+public class Precinct implements java.io.Serializable, RemarkObject{
 	private static final long serialVersionUID = 1L;
 	
 	@Id @GeneratedValue
@@ -51,7 +51,7 @@ public class Precinct implements java.io.Serializable{
 		
 		if(!Validator.isJSONValid(boundaryJSON))
 			throw new Exception("boundaryJSON value is not a valid JSON");
-		if(!Validator.isJSONValid(boundaryJSON))
+		if(!Validator.isJSONValid(centerPointJSON))
 			throw new Exception("centerPointJSON value is not a valid JSON");
 		this.centerPointJSON = centerPointJSON;
 		this.boundaryJSON = boundaryJSON;
@@ -76,7 +76,9 @@ public class Precinct implements java.io.Serializable{
 		return centerPointJSON;
 	}
 
-	public void setCenterPointJSON(String centerPointJSON) {
+	public void setCenterPointJSON(String centerPointJSON) throws Exception {
+		if(!Validator.isJSONValid(centerPointJSON))
+			throw new Exception("centerPointJSON value is not a valid JSON");
 		this.centerPointJSON = centerPointJSON;
 	}
 
@@ -84,7 +86,9 @@ public class Precinct implements java.io.Serializable{
 		return boundaryJSON;
 	}
 
-	public void setBoundary(String boundaryJSON) {
+	public void setBoundary(String boundaryJSON) throws Exception {
+		if(!Validator.isJSONValid(boundaryJSON))
+			throw new Exception("boundaryJSON value is not a valid JSON");
 		this.boundaryJSON = boundaryJSON;
 	}
 

@@ -23,3 +23,11 @@ public List<Object> getAllRecords(Class c) throws Throwable
  * @throws Throwable
  */
 public List<Object> getRecordsBasedOnCriteria(Class c, Map<String,Object>criteria) throws Throwable
+
+/**
+ * Method to add a remark in a db entry
+ * @param Object of the class and remark to be saved into DB
+ * @return 
+ * @throws Throwable : use getStackTrace() to find the error
+ */
+public void addRemark(RemarkObject o, String remark) throws Throwable

@@ -15,6 +15,8 @@ import org.hibernate.criterion.Restrictions;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
 
+import gerrymandering.model.RemarkObject;
+
 public class HibernateManager {
 	private static HibernateManager instance;
     private SessionFactory sessionFactory;
@@ -52,6 +54,21 @@ public class HibernateManager {
 		session.getTransaction().commit();
 		session.close();	
 		return true;
+	}
+	
+	/**
+	 * Method to add a remark in a db entry
+	 * @param Object of the class and remark to be saved into DB
+	 * @return 
+	 * @throws Throwable : use getStackTrace() to find the error
+	 */
+	public void addRemark(RemarkObject o, String remark) throws Throwable{			
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		o.setRemarks(remark);
+		session.saveOrUpdate(o);
+		session.getTransaction().commit();
+		session.close();	
 	}
 	
 	/**

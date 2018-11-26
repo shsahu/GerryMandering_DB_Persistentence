@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "ELECTION_DATA")
-public class Population implements java.io.Serializable{
+public class Population implements java.io.Serializable, RemarkObject{
 	@Id @GeneratedValue
 	@Column(name = "POPULATION_ID")
 	private int poputationId;

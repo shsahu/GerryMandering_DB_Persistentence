@@ -8,7 +8,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "PARTY_REPRESENTATIVE")
-public class PartyRepresentative implements java.io.Serializable{
+public class PartyRepresentative implements java.io.Serializable, RemarkObject{
 
 	@Id @GeneratedValue
 	@Column(name = "REPRESENTATIVE_ID")

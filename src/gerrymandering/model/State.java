@@ -8,7 +8,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "STATES")
-public class State implements java.io.Serializable{
+public class State implements java.io.Serializable, RemarkObject{
 	private static final long serialVersionUID = 1L;
 
 	@Id @GeneratedValue

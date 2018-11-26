@@ -15,7 +15,7 @@ import utils.PartyName;
 
 @Entity
 @Table(name = "ELECTION_DATA")
-public class ElectionData implements java.io.Serializable{
+public class ElectionData implements java.io.Serializable, RemarkObject{
 
 	private static final long serialVersionUID = 1L;
 

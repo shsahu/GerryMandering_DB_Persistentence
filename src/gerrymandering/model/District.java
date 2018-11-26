@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "DISTRICTS")
-public class District implements java.io.Serializable{
+public class District implements java.io.Serializable, RemarkObject{
 	private static final long serialVersionUID = 1L;
 
 	@Id @GeneratedValue
@@ -87,7 +87,9 @@ public class District implements java.io.Serializable{
 		return boundaryJSON;
 	}
 
-	public void setBoundary(String boundaryJSON) {
+	public void setBoundary(String boundaryJSON) throws Exception {
+		if(!Validator.isJSONValid(boundaryJSON))
+			throw new Exception("boundaryJSON value is not a valid JSON");
 		this.boundaryJSON = boundaryJSON;
 	}
 	
@@ -114,4 +116,6 @@ public class District implements java.io.Serializable{
 	public void setRemarks(String remarks) {
 		this.remarks = remarks;
 	}
+
+
 }
