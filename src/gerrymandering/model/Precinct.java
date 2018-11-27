@@ -6,8 +6,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.json.JSONObject;
-
 import utils.Validator;
 
 @Entity

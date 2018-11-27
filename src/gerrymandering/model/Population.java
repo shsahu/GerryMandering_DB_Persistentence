@@ -1,6 +1,6 @@
 package gerrymandering.model;
 
-import java.util.Date;
+import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "ELECTION_DATA")
+@Table(name = "POPULATION")
 public class Population implements java.io.Serializable, RemarkObject{
 	@Id @GeneratedValue
 	@Column(name = "POPULATION_ID")
