@@ -50,11 +50,11 @@ public class Main {
 			l =hb.getAllRecords(District.class);
 			itr = l.iterator();
 			while (itr.hasNext()) {
-				District emp = (District) itr.next();
-				System.out.print(emp.getDistrictId()+" ");
-				System.out.print(emp.getStateId()+" ");
-				System.out.print(emp.getName()+ " ");
-				System.out.print(emp.getBoundary()+" ");
+				District d = (District) itr.next();
+				System.out.print(d.getDistrictId()+" ");
+				System.out.print(d.getStateId()+" ");
+				System.out.print(d.getName()+ " ");
+				System.out.print(d.getBoundaryJSON()+" ");
 				System.out.println();
 			}
 			
@@ -66,11 +66,11 @@ public class Main {
 			l = hb.getRecordsBasedOnCriteria(District.class,criteria);
 			itr = l.iterator();
 			while (itr.hasNext()) {
-				District emp = (District) itr.next();
-				System.out.print(emp.getDistrictId()+" ");
-				System.out.print(emp.getStateId()+" ");
-				System.out.print(emp.getName()+ " ");
-				System.out.print(emp.getBoundary()+" ");
+				District d = (District) itr.next();
+				System.out.print(d.getDistrictId()+" ");
+				System.out.print(d.getStateId()+" ");
+				System.out.print(d.getName()+ " ");
+				System.out.print(d.getBoundaryJSON()+" ");
 				System.out.println();
 			}
 		

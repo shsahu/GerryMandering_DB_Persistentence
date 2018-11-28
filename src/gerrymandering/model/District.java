@@ -83,11 +83,11 @@ public class District implements java.io.Serializable, RemarkObject{
 		this.name = name;
 	}
 
-	public String getBoundary() {
+	public String getBoundaryJSON() {
 		return boundaryJSON;
 	}
 
-	public void setBoundary(String boundaryJSON) throws Exception {
+	public void setBoundaryJSON(String boundaryJSON) throws Exception {
 		if(!Validator.isJSONValid(boundaryJSON))
 			throw new Exception("boundaryJSON value is not a valid JSON");
 		this.boundaryJSON = boundaryJSON;
