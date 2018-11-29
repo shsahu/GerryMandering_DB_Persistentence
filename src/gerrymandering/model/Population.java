@@ -13,7 +13,7 @@ import javax.persistence.Table;
 public class Population implements java.io.Serializable, RemarkObject{
 	@Id @GeneratedValue
 	@Column(name = "POPULATION_ID")
-	private int poputationId;
+	private int populationId;
 	
 	private Date date;
 	private double population;
@@ -58,12 +58,12 @@ public class Population implements java.io.Serializable, RemarkObject{
 		// TODO Auto-generated constructor stub
 	}
 
-	public int getPoputationId() {
-		return poputationId;
+	public int getPopulationId() {
+		return populationId;
 	}
 
-	public void setPoputationId(int poputationId) {
-		this.poputationId = poputationId;
+	public void setPopulationId(int populationId) {
+		this.populationId = populationId;
 	}
 
 	public Date getDate() {
